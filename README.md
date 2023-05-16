@@ -22,6 +22,7 @@ If you need the design files, you can download them from Figma's Community 👉 
 ## Table of contents
 
 * [Usage](#usage)
+  * [Must Install](#must-install)
   * [Setup your .env config file](#setup-your-env-config-file)
   * [Install Laravel dependencies](#install-laravel-dependencies)
   * [Migrate the tables](#migrate-the-tables)
@@ -37,11 +38,58 @@ If you need the design files, you can download them from Figma's Community 👉 
 
 This project was built with [Laravel Jetstream](https://jetstream.laravel.com/) and [Livewire + Blade](https://jetstream.laravel.com/2.x/introduction.html#livewire-blade) as Stack.
 
+### Must Install
+- [XAMPP](https://getcomposer.org/Composer-Setup.exe) and open the ``php.ini`` file in ``C:\xampp\php``, then remove the ``;`` sign in ``extension=pdo_pgsql`` and ``extension=pgsql``.
+- [Composer](https://getcomposer.org/Composer-Setup.exe) and run ``composer self-update 2.3.10``
+- [PostgreSQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
+
 ### Setup your .env config file
 Make sure to add the database configuration in your .env file such as database name, username, password and port.
+```bash
+  DB_CONNECTION=pgsql
+  DB_HOST=127.0.0.1
+  DB_PORT=5432
+  DB_DATABASE=artivity-system
+  DB_USERNAME=postgres
+  DB_PASSWORD=yourpassword
+```
+Next in the ``database.php`` file, change the default database to pgsql: ``'default' => env('DB_CONNECTION', 'pgsql'),``
+then change the pgsql list value like in the ``.env`` file.
 
 ### Install Laravel dependencies
-In the root of your Laravel application, run the ``php composer.phar install`` (or ``composer install``) command to install all of the framework's dependencies.
+In the root of your Laravel application, run the ``composer install`` command to install all of the framework's dependencies.
+After that there should be 2 errors, first on MapDateTime, change the code to be like this:
+```bash
+class MapDateTime
+{
+    public function __construct(
+        public $format = null
+
+    ) {
+    }
+}
+```
+second, in the Requirement, change the code to something like this:
+```bash
+class Requirement
+{
+    public const ASCII_SLUG = '[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*'; // symfony/string AsciiSlugger default implementation
+    public const CATCH_ALL = '.+';
+    public const DATE_YMD = '[0-9]{4}-(?:0[1-9]|1[012])-(?:0[1-9]|[12][0-9]|(?<!02-)3[01])'; // YYYY-MM-DD
+    public const DIGITS = '[0-9]+';
+    public const UID_BASE32 = '[0-9A-HJKMNP-TV-Z]{26}';
+    public const UID_BASE58 = '[1-9A-HJ-NP-Za-km-z]{22}';
+    public const UID_RFC4122 = '[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}';
+    public const ULID = '[0-7][0-9A-HJKMNP-TV-Z]{25}';
+    public const UUID = '[0-9a-f]{8}-[0-9a-f]{4}-[1-6][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}';
+    public const UUID_V1 = '[0-9a-f]{8}-[0-9a-f]{4}-1[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}';
+    public const UUID_V3 = '[0-9a-f]{8}-[0-9a-f]{4}-3[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}';
+    public const UUID_V4 = '[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}';
+    public const UUID_V5 = '[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}';
+    public const UUID_V6 = '[0-9a-f]{8}-[0-9a-f]{4}-6[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}';
+}
+```
+
 
 ### Migrate the tables
 
