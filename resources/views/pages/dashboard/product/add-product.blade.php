@@ -105,13 +105,16 @@
                                         <div class="col-span-6">
                                             <label for="price" class="block mb-3 font-medium text-gray-700 text-md">Harga</label>
 
-                                            <input placeholder="Berapa harga yang ingin kamu tawarkan?" type="number" name="price" id="price" autocomplete="price" class="block w-full py-3 mt-1 border-gray-300 rounded-md shadow-sm  sm:text-sm" value="{{ old('price') }}" required>
+                                            <div class="relative">
+                                                <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-300 text-sm">Rp.</span>
+                                                <input placeholder="Berapa harga yang ingin kamu tawarkan?" type="number" name="price" id="price" autocomplete="price" class="block w-full py-3 pl-8 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm" value="{{ old('price') }}" required inputmode="numeric">
+                                            </div>
 
                                             @if ($errors->has('price'))
                                                 <p class="text-red-500 mb-3 text-sm">{{ $errors->first('price') }}</p>
                                             @endif
-
                                         </div>
+
 
                                         <div class="col-span-6">
 

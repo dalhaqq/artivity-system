@@ -111,8 +111,11 @@
                             <x-jet-input placeholder="Tambahkan keterangan" id="description" type="text" name="description" :value="old('description')" required autofocus />
                         </div>
                         <div class="flex flex-col mb-3">
-                            <x-jet-label for="price" value="{{ __('Harga') }}" />
-                            <x-jet-input placeholder="Berapa harga finishing?" id="price" type="number" name="price" :value="old('price')" required autofocus />
+                            <div class="relative">
+                                <span class="absolute left-2 top-1/2 transform -translate-y-1 mt-1 text-gray-500 dark:text-gray-300 text-sm">Rp.</span>
+                                <x-jet-label for="price" value="{{ __('Harga') }}" />
+                                <x-jet-input placeholder="Berapa harga finishing?" id="price" type="number" name="price" :value="old('price')" required autofocus class="pl-8" inputmode="numeric" />
+                            </div>
                         </div>
                         <div class="flex justify-end gap-2">
                             <button class="btn bg-slate-500 hover:bg-slate-600 text-white tombolreset" type="reset">Reset</button>
