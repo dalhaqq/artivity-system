@@ -6,16 +6,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.9",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.5",
-        "protonemedia/laravel-splade": "*"
+        "livewire/livewire": "^2.12",
+        "protonemedia/laravel-splade": "*",
+        "spatie/pdf-to-image": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
+        "fly-apps/dockerfile-laravel": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",

@@ -10,7 +10,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MakeOrderController;
+use App\Http\Controllers\PrintOrderController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\PrintPaymentController;
+use App\Http\Controllers\PrediksiHargaController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductFinishingController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
@@ -26,13 +29,25 @@ use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 |
 */
 
-Route::redirect('/', 'login');
+Route::redirect('/', 'home');
 Route::get('home', [LandingPageController::class, 'index'])->name('home');
 Route::get('kontak', [KontakController::class, 'index'])->name('kontak');
 Route::resource('produk', ProdukController::class);
+Route::get('upload-file',[PrediksiHargaController::class, 'index'])->name('uploadfile');
+Route::post('file-upload', [PrediksiHargaController::class, 'FileUpload' ])->name('FileUpload');
+Route::get('testPDF', function(){
+    return view ('pages.prediksi-harga.pdf');
+} ) ;
+
 
 Route::get('nyoba', function(){
     return view('nyoba');
+});
+
+Route::prefix('api/v1')->group(function () {
+    Route::get('upload', function(){
+        return ('ok');
+    });
 });
 
 Route::prefix('tentang')->group(function () {
@@ -42,6 +57,7 @@ Route::prefix('tentang')->group(function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    
     Route::get('/jsonkertas/{id}', [MakeOrderController::class, 'jsondata']);
     Route::get('/jsonfinishingorder/{id}', [ProductFinishingController::class, 'jsondata']);
     Route::get('/jsonhitung/{produk}/{kertas}/{finishing}', [MakeOrderController::class, 'jsonhitung']);
@@ -52,6 +68,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('my-order', [OrderController::class, 'myOrder'])->name('my-order');
     Route::get('akun/setting', [UserProfileController::class, 'akunsetting'])->name('akun-setting');
     Route::get('/jsondetailorder/{id}',[OrderController::class, 'jsondata'])->name('jsondetailorder');
+    Route::post('print-payment',[PrintPaymentController::class, 'payment'])->name('printPayment');
+    Route::post('print-order', [PrintOrderController::class, 'order'])->name('printOrder');
+    
     //ADMIN ROUTES
     Route::middleware(['AdminMiddleware'])->group(function () {
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\PrintOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,14 +17,16 @@ class OrderController extends Controller
     public function index()
     {
         return view('pages.dashboard.order', [
-            'order' => Order::all()
+            'order' => Order::all(),
+            'print' => PrintOrder::all()
         ]);
     }
 
     public function myOrder()
     {
         return view('pages.dashboard.myorder', [
-            'order' => Order::where('buyers_id', Auth::user()->id)->get()
+            'order' => Order::where('buyers_id', Auth::user()->id)->get(),
+            'printorder' => PrintOrder::where('buyers_id', Auth::user()->id)->get()
         ]);
     }
 

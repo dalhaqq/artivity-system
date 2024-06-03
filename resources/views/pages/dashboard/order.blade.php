@@ -64,7 +64,8 @@
                 </header>
                 <div class="py-3">
                     <ul id="accordion-collapse" data-accordion="collapse" role="list" class="divide-y px-3 md:px-8 lg:px-12 divide-gray-200">
-                    @foreach ($order as $row)
+                        @livewire('all-print-order')
+                        @foreach ($order as $row)
                         <li class="flex items-center justify-between gap-x-6 py-5">
                             <div class="min-w-0">
                             <div class="flex items-start gap-x-3">

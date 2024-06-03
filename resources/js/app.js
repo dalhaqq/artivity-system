@@ -4,7 +4,6 @@ import Alpine from 'alpinejs';
 
 import 'flowbite';
 
-// Import Chart.js
 import { Chart } from 'chart.js';
 
 // Import flatpickr

@@ -22,12 +22,12 @@
         <li class="mb-2 md:mb-0">
             <a href="{{ route('profil') }}" class="block py-2 pl-3 pr-2 text-gray-700 rounded md:bg-transparent @if(in_array(Request::segment(2), ['profil'])){{ 'text-white md:text-blue-700 bg-blue-700' }}@endif md:p-0" aria-current="page">Profil</a>
         </li>
+        @auth
         @if (Auth::user()->id == 1)
         <li class="mb-2 md:mb-0">
             <a href="{{ route('dashboard') }}" class="block py-2 pl-3 pr-2 text-gray-700 rounded md:bg-transparent @if(in_array(Request::segment(2), ['dashboard'])){{ 'text-white md:text-blue-700 bg-blue-700' }}@endif md:p-0" aria-current="page">Dashboard</a>
         </li>
         @endif
-        @auth
         <hr class="hidden md:inline w-px h-6 bg-slate-200" />
         <li>
             <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full pl-3 pr-4 font-medium text-gray-700 rounded md:bg-transparent @if(in_array(Request::segment(1), ['tentang'])){{ 'text-white md:text-blue-700 bg-blue-700' }}@endif md:p-0">{{ Auth::user()->name }} <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
