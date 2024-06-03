@@ -29,7 +29,7 @@ class Uploader extends Component
             $price = 0;
             // Kirim gambar ke endpoint API
             try{
-                $response = $client->post('http://127.0.0.1:5000/api/v3/upload', [
+                $response = $client->post(getenv('API_MODEL'), [
                 'timeout' => 360,
                 'headers' => [
                                 'api-key' => getenv('API_KEY_PRICE_COUNTER'),
