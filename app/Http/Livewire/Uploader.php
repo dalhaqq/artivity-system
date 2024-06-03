@@ -29,7 +29,7 @@ class Uploader extends Component
             $price = 0;
             // Kirim gambar ke endpoint API
             try{
-                $response = $client->post(getenv('API_MODEL'), [
+                $response = $client->post('https://api-artivity.webku.xyz/api/v3/upload', [
                 'timeout' => 360,
                 'headers' => [
                                 'api-key' => getenv('API_KEY_PRICE_COUNTER'),
