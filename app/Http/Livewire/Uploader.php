@@ -61,6 +61,7 @@ class Uploader extends Component
                 }
             }catch(\Exception $e){
                 $this->errorAPI = TRUE;
+                return $e->getMessage();
             }
         } else {
             $this->Price = "Error uploading file: " . $response->getBody();
