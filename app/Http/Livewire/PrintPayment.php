@@ -25,9 +25,11 @@ class PrintPayment extends Component
     public function savePrintOrder(){
         
         $uploadDate = now()->format('Ymd_His');
-        $extension = $this->filePayment->extension();
-        $filePaymentName = "print_payment_".Auth::user()->id."_".$uploadDate.'.'.$extension;
-        $this->filePayment->storeAs("public/payment_print_order", $filePaymentName);
+
+        $path =  $this->filePayment->store(
+            'payment_print_order',
+            'public'
+        );
         
         $filePrint = $this->printPayment['filepath'];
         $filePrintName = Auth::user()->id.'-'.Auth::user()->name.'-'.$uploadDate.'-'.'x'.$this->printPayment['jml_copy'].'-'.$this->printPayment['filename'];
@@ -45,7 +47,7 @@ class PrintPayment extends Component
             'two_side'             => $this->printPayment['jml_sisi'] == 2 ? TRUE : FALSE ,
             'harga'                => $this->printPayment['pricetopay'] ,
             'catatan'              => $this->printPayment['description'],
-            'bukti_bayar'          => $filePaymentName,
+            'bukti_bayar'          => $path,
             'file'                 => $filePrintName
         ]);
 

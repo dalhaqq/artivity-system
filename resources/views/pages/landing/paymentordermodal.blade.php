@@ -14,7 +14,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-2">
-                <img class="h-[60vh]" src="{{ asset('storage/payment_print_order/' . $Bukti_bayar) }}" alt="">
+                <img class="h-[60vh]" src="{{ Storage::url($Bukti_bayar) }}" alt="">
             </div>
         </div>
     </div>
