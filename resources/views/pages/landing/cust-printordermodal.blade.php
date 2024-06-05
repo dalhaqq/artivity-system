@@ -60,7 +60,7 @@
             <div class="flex justify-between items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                 <div class="space-y-2 text-left">
                     
-                    <a href="{{ Storage::url($Bukti_bayar) }}" target="_blank" class="buktipembayaran rounded-md bg-indigo-50 px-3 py-2 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100">Bukti Pembayaran</a>
+                    <a href="{{ asset('storage/payment_print_order/' . $Bukti_bayar) }}" target="_blank" class="buktipembayaran rounded-md bg-indigo-50 px-3 py-2 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100">Bukti Pembayaran</a>
                     <a href="{{ asset('storage/file_print_order/' . $File) }}" target="_blank" class="file rounded-md bg-indigo-50 px-3 py-2 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100">File Cetak</a>
                 </div>
             </div>

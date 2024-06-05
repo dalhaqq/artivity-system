@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\PrintOrder;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PrintPayment extends Component
 {
@@ -25,11 +26,12 @@ class PrintPayment extends Component
     public function savePrintOrder(){
         
         $uploadDate = now()->format('Ymd_His');
+        $extension = $this->filePayment->extension();
+        $filePaymentName = "print_payment_" . Auth::user()->id . "_" . $uploadDate . '.' . $extension;
+        $this->filePayment->storeAs("storage/payment_print_order", $filePaymentName);
 
-        $path =  $this->filePayment->store(
-            'payment_print_order',
-            'public'
-        );
+        Storage::disk('public')->putFileAs('payment_print_order', $this->filePayment, $filePaymentName);
+        Storage::disk('local')->putFileAs('payment_print_order', $this->filePayment, $filePaymentName);
         
         $filePrint = $this->printPayment['filepath'];
         $filePrintName = Auth::user()->id.'-'.Auth::user()->name.'-'.$uploadDate.'-'.'x'.$this->printPayment['jml_copy'].'-'.$this->printPayment['filename'];
@@ -47,7 +49,7 @@ class PrintPayment extends Component
             'two_side'             => $this->printPayment['jml_sisi'] == 2 ? TRUE : FALSE ,
             'harga'                => $this->printPayment['pricetopay'] ,
             'catatan'              => $this->printPayment['description'],
-            'bukti_bayar'          => $path,
+            'bukti_bayar'          => $filePaymentName,
             'file'                 => $filePrintName
         ]);
 
