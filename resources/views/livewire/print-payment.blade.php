@@ -52,11 +52,42 @@
     <div class="border flex flex-col col-span-5 py-5 px-5 h-fit border-gray-100 shadow-lg rounded-lg">
         <label class="block mb-2 text-lg font-medium text-gray-900 dark:text-white" for="buktipembayaran">Upload
             Bukti Pembayaran</label>
-        <input wire:model='filePayment'
+        @error('filePayment')
+        <div class="rounded-md bg-red-50 mb-4 p-4">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <h3 class="text-sm font-medium text-red-800">Terdapat {{ $this->getErrorBag()->count() }} kesalahan pada file bukti bayar</h3>
+                    <div class="mt-2 text-sm text-red-700">
+                        <ul role="list" class="list-disc space-y-1 pl-5">
+                            @foreach ($this->getErrorBag()->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @enderror
+        <input wire:model='filePayment' accept='.png, .jpg, .jpeg, .heic'
             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
             id="filePayment" type="file" name="filePayment" required>
+
+        <button wire:loading.attr="disabled" wire:click="savePrintOrder" type="button"
+            class="transitio mt-5 ease-in-out justify-center inline-flex rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <span wire:loading.remove wire:target='filePayment'>Bayar</span>
         
-        <button wire:click='savePrintOrder'
-            class="pesan w-full px-3 py-2 mt-5 text-sm font-medium text-center text-white bg-blue-500 rounded-lg transition ease-in-out duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300">Bayar</button>
+            <span wire:loading.inline-flex wire:target='filePayment' class="items-center"">
+                        <span class=" animate-spin mr-1 self-center inline-block w-4 h-4 border-[3px] border-current
+                border-t-transparent text-white rounded-full" role="status" aria-label="loading"></span>
+            Loading...
+            </span>
+        </button>
     </div>
 </div>

@@ -24,7 +24,7 @@ class PrintPayment extends Component
 
     
     public function savePrintOrder(){
-        
+        $this->filePaymentValidation();
         $uploadDate = now()->format('Ymd_His');
         $extension = $this->filePayment->extension();
         $filePaymentName = "print_payment_" . Auth::user()->id . "_" . $uploadDate . '.' . $extension;
@@ -58,12 +58,12 @@ class PrintPayment extends Component
     public function filePaymentValidation() {
         $this->validate(
             [
-                'file_payment_path'              => 'required|mimes:jpeg,png,jpg|max:1048',
+                'filePayment'              => 'required|mimes:jpeg,png,jpg|max:5048',
             ],
             [
-                'file_payment_path.required'     => 'Tidak ada file foto',
-                'file_payment_path.max'          => 'Ukuran file terlalu besar (max 1mb)',
-                'file_payment_path.mimes'        => 'Format file tidak valid (jpeg, png, jpg)',
+                'filePayment.required'     => 'Tidak ada file foto',
+                'filePayment.max'          => 'Ukuran file terlalu besar (max 5mb)',
+                'filePayment.mimes'        => 'Format file tidak valid (jpeg, png, jpg, heic)',
             ]
         );
     }
