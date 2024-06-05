@@ -29,6 +29,8 @@ class PrintPayment extends Component
         $extension = $this->filePayment->extension();
         $filePaymentName = "print_payment_" . Auth::user()->id . "_" . $uploadDate . '.' . $extension;
         $this->filePayment->storeAs("storage/payment_print_order", $filePaymentName);
+
+        Storage::disk('public')->putFileAs('payment_print_order', $this->filePayment, $filePaymentName);
         
         $filePrint = $this->printPayment['filepath'];
         $filePrintName = Auth::user()->id.'-'.Auth::user()->name.'-'.$uploadDate.'-'.'x'.$this->printPayment['jml_copy'].'-'.$this->printPayment['filename'];
