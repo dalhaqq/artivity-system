@@ -58,7 +58,7 @@ class PrintPayment extends Component
     public function filePaymentValidation() {
         $this->validate(
             [
-                'filePayment'              => 'required|mimes:jpeg,png,jpg|max:5048',
+                'filePayment'              => 'required|mimes:jpeg,png,jpg,heic|max:5048',
             ],
             [
                 'filePayment.required'     => 'Tidak ada file foto',

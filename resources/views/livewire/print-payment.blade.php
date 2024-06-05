@@ -79,8 +79,12 @@
             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
             id="filePayment" type="file" name="filePayment" required>
 
-        <button wire:loading.attr="disabled" wire:click="savePrintOrder" type="button"
-            class="transitio mt-5 ease-in-out justify-center inline-flex rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+        <button
+            wire:loading.attr="disabled"
+            wire:target='filePayment'
+            wire:click="savePrintOrder" type="button"
+            class="mt-5 justify-center inline-flex rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
             <span wire:loading.remove wire:target='filePayment'>Bayar</span>
         
             <span wire:loading.inline-flex wire:target='filePayment' class="items-center"">
