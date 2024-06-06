@@ -9,8 +9,8 @@
     </article>
 </section>
 
-<section class="bg-white min-h-screen">
-<article class="gap-16 items-center py-4 px-4 border border-1 border-gray-200 mx-auto max-w-screen-xl lg:grid lg:py-6 lg:px-6 rounded-lg shadow-lg">
+<section class="bg-white px-4 min-h-screen">
+<article class="items-center py-4 px-4 border border-1 border-gray-200 mx-auto max-w-screen-xl lg:grid lg:py-6 lg:px-6 rounded-lg shadow-lg">
     @if (session()->has('berhasil'))
     <div id="alert-3" class="flex p-4 mb-4 text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400" role="alert">
         <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>

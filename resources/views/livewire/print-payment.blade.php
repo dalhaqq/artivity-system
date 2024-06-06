@@ -4,7 +4,7 @@
     <div class="md:grid gap-8 md:grid-cols-12">
         <div class="border mb-8 flex flex-col py-5 px-5 h-full border-gray-100 shadow-lg rounded-lg col-span-7">
             <h2 class="text-2xl mb-4 font-bold tracking-tight text-gray-900">Rincian Pesanan</h2>
-            <table class="min-w-full divide-y divide-gray-300">
+            <table class="min-w-full table-fixed divide-y divide-gray-300">
                 <tbody class="divide-y divide-gray-200">
                     <tr>
                         <td class="whitespace-nowrap py-3 font-semibold">Produk</td>

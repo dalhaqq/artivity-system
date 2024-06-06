@@ -18,7 +18,15 @@
         </div>
         <div class="flex flex-none items-center gap-x-4">
             <button wire:click='detailPrintOrder(({{$row->id}}))' type="button"
-                class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 block">Detail
+                class="rounded-full bg-white p-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 block sm:hidden">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z" />
+                </svg>
+            </button>
+            <button data-modal-target="printOrderCust" data-modal-toggle="printOrderCust" type="button"class="hidden"></button>
+            <button wire:click='detailPrintOrder(({{$row->id}}))' type="button"
+                class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 hidden sm:block">Detail
                 Pesanan</button>
             <button data-modal-target="printOrderCust" data-modal-toggle="printOrderCust" type="button"class="hidden"></button>
         </div>

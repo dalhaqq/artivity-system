@@ -14,16 +14,16 @@
             <!-- Modal body -->
             <div class="p-6 space-y-2">
                 <p class="rounded-md w-fit whitespace-nowrap mt-0.5 px-1.5 py-0.5 font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">{{$Order_status_id}}</p>
-                <div class="flex justify-between">
+                <div class="grid grid-cols-2">
                     <div>
-                        <p class="font-medium text-sm md:text-base text-gray-900">No.Invoice</p>
-                        <p class="font-medium text-sm md:text-base text-gray-900">Nama</p>
-                        <p class="font-medium text-sm md:text-base text-gray-900">Tanggal Pemesanan</p>
+                        <p class="font-medium truncate text-sm md:text-base text-gray-900">No.Invoice</p>
+                        <p class="font-medium truncate text-sm md:text-base text-gray-900">Nama</p>
+                        <p class="font-medium truncate text-sm md:text-base text-gray-900">Tanggal Pemesanan</p>
                     </div>
-                    <div class="text-right">
-                        <p class="font-semibold text-sm md:text-base text-gray-900" id="no_pemesanan">{{$No_pemesanan}}</p>
-                        <p class="font-semibold text-sm md:text-base text-gray-900" id="buyersname">{{$Buyers_name}}</p>
-                        <p class="font-semibold text-sm md:text-base text-gray-900" id="tanggal">{{ \Carbon\Carbon::parse($Created_at)->isoFormat('D MMMM Y') }}</p>
+                    <div>
+                        <p class="font-semibold truncate text-sm md:text-base text-gray-900" id="no_pemesanan">{{$No_pemesanan}}</p>
+                        <p class="font-semibold truncate text-sm md:text-base text-gray-900" id="buyersname">{{$Buyers_name}}</p>
+                        <p class="font-semibold truncate text-sm md:text-base text-gray-900" id="tanggal">{{ \Carbon\Carbon::parse($Created_at)->isoFormat('D MMMM Y') }}</p>
                     </div>
                 </div>
                 <div>

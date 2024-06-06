@@ -5,7 +5,7 @@
         
         <div class="border mb-8 flex flex-col py-5 px-5 h-full border-gray-100 shadow-lg rounded-lg col-span-7">
             <h2 class="text-2xl mb-2 font-bold tracking-tight text-gray-900">Cetak Dokumen</h2>
-            <h2 class="text-lg mb-4 font-medium text-gray-900">{{$printOrder['filename']}}</h2>
+            <p class="text-lg mb-4 truncate ine font-medium text-gray-900">{{$printOrder['filename']}}</p>
             <h2 class="text-2xl mb-4 font-bold tracking-tight text-gray-900"></h2>
             <form action="{{route('printPayment')}}" method="POST" enctype="multipart/form-data">
                 @csrf
